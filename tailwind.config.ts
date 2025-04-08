@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,18 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Autumn-themed palette
+				autumn: {
+					terracotta: '#E07A5F',
+					amber: '#F2CC8F',
+					olive: '#606C38',
+					orange: '#D4722B',
+					cream: '#F8EDEB',
+					rust: '#A94F2A',
+					sage: '#A3B18A',
+					brown: '#774936',
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,12 +96,26 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+				'fade-in': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(10px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.5s ease-out forwards',
+			},
+			backgroundImage: {
+				'autumn-gradient': 'linear-gradient(to right, #E07A5F, #F2CC8F)',
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],

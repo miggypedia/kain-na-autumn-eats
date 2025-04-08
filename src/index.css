@@ -88,6 +88,14 @@
     content: '';
     @apply absolute inset-0 -z-10 bg-gradient-to-r from-primary/20 to-secondary/20 blur-xl opacity-50 rounded-lg;
   }
+  
+  .story-ring {
+    @apply relative rounded-full p-[2px] bg-gradient-to-tr from-primary to-secondary;
+  }
+  
+  .story-ring-inactive {
+    @apply relative rounded-full p-[2px] bg-muted/80;
+  }
 }
 
 @font-face {

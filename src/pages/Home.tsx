@@ -1,6 +1,6 @@
-
 import React from 'react';
 import FoodPost from '@/components/FoodPost';
+import StoriesCarousel from '@/components/StoriesCarousel';
 import { Sparkles } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 
@@ -69,6 +69,57 @@ const SUGGESTED_CREATORS = [
   }
 ];
 
+const SAMPLE_STORIES = [
+  {
+    id: 1,
+    username: "chefmaria",
+    userAvatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
+    isActive: true,
+  },
+  {
+    id: 2,
+    username: "foodphotographer",
+    userAvatar: "https://images.unsplash.com/photo-1546961329-78bef0414d7c?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
+    isActive: true,
+  },
+  {
+    id: 3,
+    username: "bakingqueen",
+    userAvatar: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
+    isActive: false,
+  },
+  {
+    id: 4,
+    username: "modernchef",
+    userAvatar: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
+    isActive: true,
+  },
+  {
+    id: 5,
+    username: "foodstylist",
+    userAvatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
+    isActive: false,
+  },
+  {
+    id: 6,
+    username: "avantgardebaker",
+    userAvatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
+    isActive: true,
+  },
+  {
+    id: 7,
+    username: "culinaryartist",
+    userAvatar: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
+    isActive: false,
+  },
+  {
+    id: 8,
+    username: "dessertsculptor",
+    userAvatar: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
+    isActive: true,
+  },
+];
+
 const Home = () => {
   return (
     <div className="md:pt-4">
@@ -86,6 +137,11 @@ const Home = () => {
               <span>For You</span>
             </button>
           </div>
+          
+          {/* Stories Carousel */}
+          <Card className="tech-card p-2">
+            <StoriesCarousel stories={SAMPLE_STORIES} />
+          </Card>
           
           {SAMPLE_POSTS.map((post) => (
             <FoodPost

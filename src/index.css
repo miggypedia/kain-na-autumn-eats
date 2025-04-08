@@ -5,44 +5,44 @@
 
 @layer base {
   :root {
-    --background: 35 38% 97%;
-    --foreground: 20 25% 25%;
+    --background: 220 25% 15%;
+    --foreground: 220 20% 98%;
 
-    --card: 35 38% 97%;
-    --card-foreground: 20 25% 25%;
+    --card: 220 25% 20%;
+    --card-foreground: 220 20% 98%;
 
-    --popover: 35 38% 97%;
-    --popover-foreground: 20 25% 25%;
+    --popover: 220 45% 18%;
+    --popover-foreground: 220 20% 98%;
 
-    --primary: 15 70% 62%;
-    --primary-foreground: 35 38% 97%;
+    --primary: 260 75% 60%;
+    --primary-foreground: 220 20% 98%;
 
-    --secondary: 40 82% 75%;
-    --secondary-foreground: 20 25% 25%;
+    --secondary: 180 75% 50%;
+    --secondary-foreground: 220 25% 15%;
 
-    --muted: 37 25% 93%;
-    --muted-foreground: 20 25% 35%;
+    --muted: 220 25% 25%;
+    --muted-foreground: 220 20% 80%;
 
-    --accent: 80 20% 45%;
-    --accent-foreground: 35 38% 97%;
+    --accent: 300 65% 55%;
+    --accent-foreground: 220 20% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 30 15% 85%;
-    --input: 30 15% 85%;
-    --ring: 15 70% 62%;
+    --border: 220 25% 25%;
+    --input: 220 25% 22%;
+    --ring: 260 75% 60%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    --sidebar-background: 35 38% 97%;
-    --sidebar-foreground: 20 25% 25%;
-    --sidebar-primary: 15 70% 62%;
-    --sidebar-primary-foreground: 35 38% 97%;
-    --sidebar-accent: 40 82% 75%;
-    --sidebar-accent-foreground: 20 25% 25%;
-    --sidebar-border: 30 15% 85%;
-    --sidebar-ring: 15 70% 62%;
+    --sidebar-background: 220 25% 12%;
+    --sidebar-foreground: 220 20% 98%;
+    --sidebar-primary: 260 75% 60%;
+    --sidebar-primary-foreground: 220 20% 98%;
+    --sidebar-accent: 180 75% 50%;
+    --sidebar-accent-foreground: 220 25% 15%;
+    --sidebar-border: 220 25% 20%;
+    --sidebar-ring: 260 75% 60%;
   }
 }
 
@@ -53,33 +53,46 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
   }
   
-  .boho-card {
-    @apply bg-white rounded-xl shadow-md overflow-hidden border border-autumn-cream hover:shadow-lg transition-shadow duration-300;
+  .tech-card {
+    @apply bg-card rounded-lg border border-border/30 hover:border-primary/30 shadow-lg shadow-black/20 hover:shadow-primary/20 transition-all duration-300;
   }
   
-  .boho-input {
-    @apply bg-autumn-cream/50 border border-autumn-amber/30 rounded-lg p-2 focus:ring-autumn-terracotta focus:border-autumn-terracotta focus:outline-none;
+  .tech-input {
+    @apply bg-input border border-border/50 rounded-md p-2 focus:ring-2 focus:ring-primary/50 focus:border-primary/50 focus:outline-none;
   }
   
-  .boho-button {
-    @apply bg-autumn-terracotta text-white rounded-lg px-4 py-2 hover:bg-autumn-rust transition-colors duration-300;
+  .tech-button {
+    @apply bg-primary text-primary-foreground rounded-md px-4 py-2 hover:bg-primary/90 transition-colors duration-300 shadow-md shadow-primary/20;
   }
   
   .recipe-step {
-    @apply p-4 border-l-2 border-autumn-amber mb-4 animate-fade-in;
+    @apply p-4 border-l-2 border-secondary mb-4 animate-fade-in;
   }
   
   .food-tag {
-    @apply bg-autumn-sage/30 text-autumn-olive px-3 py-1 rounded-full text-sm;
+    @apply bg-muted text-secondary px-3 py-1 rounded-full text-sm;
+  }
+  
+  .glass-bg {
+    @apply bg-card/80 backdrop-blur-sm border border-white/10 rounded-lg;
+  }
+  
+  .glow {
+    @apply relative;
+  }
+  
+  .glow::after {
+    content: '';
+    @apply absolute inset-0 -z-10 bg-gradient-to-r from-primary/20 to-secondary/20 blur-xl opacity-50 rounded-lg;
   }
 }
 
 @font-face {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
-  src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 }

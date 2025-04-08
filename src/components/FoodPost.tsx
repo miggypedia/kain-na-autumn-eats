@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Heart, MessageCircle, Bookmark, Share2, MoreHorizontal, ChefHat } from 'lucide-react';
+import { Heart, MessageCircle, Bookmark, Share2, MoreHorizontal, ChefHat, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface FoodPostProps {
@@ -29,34 +29,44 @@ const FoodPost = ({
   className,
 }: FoodPostProps) => {
   return (
-    <article className={cn("boho-card mb-6", className)}>
+    <article className={cn("tech-card overflow-hidden", className)}>
       {/* Post Header */}
       <div className="flex items-center justify-between p-3">
         <div className="flex items-center gap-2">
-          <img 
-            src={userAvatar} 
-            alt={username} 
-            className="w-10 h-10 rounded-full object-cover border-2 border-autumn-amber"
-          />
+          <div className="relative">
+            <img 
+              src={userAvatar} 
+              alt={username} 
+              className="w-10 h-10 rounded-full object-cover border border-secondary/30"
+            />
+            {isRecipe && (
+              <span className="absolute -bottom-1 -right-1 p-1 bg-primary rounded-full">
+                <ChefHat className="h-3 w-3 text-white" />
+              </span>
+            )}
+          </div>
           <div>
-            <p className="font-medium text-autumn-brown flex items-center">
+            <p className="font-medium flex items-center">
               {username}
-              {isRecipe && (
-                <ChefHat className="h-4 w-4 ml-1 text-autumn-terracotta" />
-              )}
             </p>
+            <p className="text-xs text-muted-foreground">{timePosted}</p>
           </div>
         </div>
-        <button>
-          <MoreHorizontal className="h-5 w-5 text-autumn-brown" />
+        <button className="p-1 rounded-full hover:bg-muted transition-colors">
+          <MoreHorizontal className="h-5 w-5" />
         </button>
       </div>
       
       {/* Post Image */}
       <div className="relative">
-        <img src={imageUrl} alt="Food post" className="w-full aspect-square md:aspect-auto md:max-h-[600px] object-cover" />
+        <img 
+          src={imageUrl} 
+          alt="Food post" 
+          className="w-full aspect-square md:aspect-auto md:max-h-[500px] object-cover"
+        />
         {isRecipe && (
-          <div className="absolute bottom-3 right-3 bg-autumn-terracotta text-white px-3 py-1 rounded-full text-sm font-medium">
+          <div className="absolute bottom-3 right-3 tech-button flex items-center gap-1 py-1 text-sm">
+            <Zap className="h-3 w-3" />
             Recipe
           </div>
         )}
@@ -65,27 +75,27 @@ const FoodPost = ({
       {/* Post Actions */}
       <div className="p-3 flex items-center justify-between">
         <div className="flex gap-4">
-          <button className="text-autumn-brown hover:text-autumn-terracotta transition-colors">
-            <Heart className="h-6 w-6" />
+          <button className="group transition-colors">
+            <Heart className="h-6 w-6 group-hover:text-primary transition-colors" />
           </button>
-          <button className="text-autumn-brown hover:text-autumn-terracotta transition-colors">
-            <MessageCircle className="h-6 w-6" />
+          <button className="group transition-colors">
+            <MessageCircle className="h-6 w-6 group-hover:text-primary transition-colors" />
           </button>
-          <button className="text-autumn-brown hover:text-autumn-terracotta transition-colors">
-            <Share2 className="h-6 w-6" />
+          <button className="group transition-colors">
+            <Share2 className="h-6 w-6 group-hover:text-primary transition-colors" />
           </button>
         </div>
-        <button className="text-autumn-brown hover:text-autumn-terracotta transition-colors">
-          <Bookmark className="h-6 w-6" />
+        <button className="group transition-colors">
+          <Bookmark className="h-6 w-6 group-hover:text-primary transition-colors" />
         </button>
       </div>
       
       {/* Post Info */}
-      <div className="px-3 pb-2">
-        <p className="font-medium text-autumn-brown">{likes.toLocaleString()} likes</p>
+      <div className="px-3 pb-4">
+        <p className="font-medium">{likes.toLocaleString()} likes</p>
         <p className="mt-1">
-          <span className="font-medium text-autumn-brown">{username}</span>
-          <span className="ml-2 text-autumn-brown">{caption}</span>
+          <span className="font-medium">{username}</span>
+          <span className="ml-2">{caption}</span>
         </p>
         
         {/* Tags */}
@@ -95,10 +105,8 @@ const FoodPost = ({
           ))}
         </div>
         
-        <p className="text-xs text-autumn-brown/70 mt-2">{timePosted}</p>
-        
         {comments > 0 && (
-          <button className="text-autumn-brown/70 text-sm mt-1">
+          <button className="text-muted-foreground text-sm mt-2">
             View all {comments} comments
           </button>
         )}
